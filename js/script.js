@@ -9,7 +9,7 @@ $(document).ready(
     // metodo: 'DELETE' elimino l'elemeno selezionato dal server e mostro la lista aggiornata
     $(document).on('click', '.elimina',
       function() {
-        var questoID = $(this).parent().attr('data-api-id');
+        var questoID = $(this).parents('.elemento').attr('data-api-id');
 
         $.ajax(
           {
@@ -23,6 +23,32 @@ $(document).ready(
             }
           }
         );
+      }
+    );
+
+    $(document).on('click', '.modifica',
+      function() {
+        var modificaElemento = $('#inserisci').val();
+        var questoID = $(this).parents('.elemento').attr('data-api-id');
+
+        $.ajax(
+          {
+            url: 'http://157.230.17.132:3023/todos/' + questoID,
+            method: 'PATCH',
+            data: {
+              text: modificaElemento
+            },
+            success: function(risposta) {
+              ottieniListaCompleta();
+            },
+            error: function() {
+              alert('impossibile modificare l\'elemento');
+            }
+          }
+        );
+
+        // resetto il valore dell'input
+        $('#inserisci').val('');
       }
     );
 

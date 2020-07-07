@@ -5,34 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todoolean</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.js"></script>
   </head>
   <body>
 
     <main>
-      <h1>Lista di cose da fare</h1>
+      <div class="container">
+        <h1>Lista di cose da fare</h1>
 
-      <!-- Input -->
-      <div class="input">
-        <input id="inserisci" type="text" placeholder="aggiungi cosa da fare" value="">
-        <button type="button" id="aggiungi">AGGIUNGI</button>
+        <div class="wrapper">
+
+          <!-- Input -->
+          <div class="input">
+            <input id="inserisci" type="text" placeholder="Aggiungi elemento alla lista" value="">
+            <button type="button" id="aggiungi">AGGIUNGI</button>
+          </div>
+          <!-- Fine Input -->
+
+          <!-- Todo List -->
+          <ul id="todo-list"></ul>
+          <!-- Fine Todo List -->
+        </div>
       </div>
-      <!-- Fine Input -->
-
-      <!-- Todo List -->
-      <ul id="todo-list"></ul>
-      <!-- Fine Todo List -->
     </main>
 
     <!-- TEMPLATE HANDLEBARS -->
     <!-- Elemento lista -->
     <script id="todo-item-template" type="text/x-handlebars-template">
-      <li data-api-id="{{ id }}">
-        {{ text }}
-        <button class="elimina">
-          elimina
-        </button>
+      <li data-api-id="{{ id }}" class="elemento">
+        <div class="testo">
+          {{ text }}
+        </div>
+        <div class="bottoni">
+          <button class="modifica">
+            modifica
+          </button>
+          <button class="elimina">
+            elimina
+          </button>
+        </div>
       </li>
     </script>
 
